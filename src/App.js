@@ -10,6 +10,8 @@ import SignIn from './components/SignIn/SignIn'
 import SignOut from './components/SignOut/SignOut'
 import ChangePassword from './components/ChangePassword/ChangePassword'
 import TopicCreate from './components/CreateTopic/CreateTopic'
+import IndexTopic from './components/IndexTopic/IndexTopic'
+import ShowTopic from './components/ShowTopic/ShowTopic'
 
 class App extends Component {
   constructor (props) {
@@ -68,6 +70,12 @@ class App extends Component {
           )} />
           <AuthenticatedRoute user={user} path='/create-topic' render={() => (
             <TopicCreate msgAlert={this.msgAlert} user={user} />
+          )} />
+          <AuthenticatedRoute user={user} exact path='/topics' render={() => (
+            <IndexTopic msgAlert={this.msgAlert} user={user} />
+          )} />
+          <AuthenticatedRoute user={user} path='/topics/:id' render={() => (
+            <ShowTopic msgAlert={this.msgAlert} user={user} />
           )} />
 
         </main>

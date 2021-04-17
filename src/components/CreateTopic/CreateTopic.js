@@ -1,7 +1,10 @@
 import React, { Component } from 'react'
 import { Redirect } from 'react-router-dom'
+import Form from 'react-bootstrap/Form'
 
-import TopicForm from '../TopicForm/TopicForm'
+import Button from 'react-bootstrap/Button'
+
+// import TopicForm from '../TopicForm/TopicForm'
 import { topicCreate } from '../../api/topics'
 
 class TopicCreate extends Component {
@@ -10,9 +13,10 @@ class TopicCreate extends Component {
 
     // initially our movies title and director will be empty until they are filled in
     this.state = {
-      movie: {
-        title: '',
-        director: ''
+      topic: {
+        username: '',
+        topic: '',
+        comment: ''
       },
       // createdId will be null, until we successfully create a movie
       createdId: null
@@ -20,6 +24,7 @@ class TopicCreate extends Component {
   }
 
   handleSubmit = event => {
+    console.log('is this working')
     event.preventDefault()
 
     const { user, msgAlert } = this.props
@@ -30,7 +35,7 @@ class TopicCreate extends Component {
       // set the createdId to the id of the movie we just created
       // .then(res => this.setState({ createdId: res.data.movie._id }))
       .then(res => {
-        this.setState({ createdId: res.data.movie._id })
+        this.setState({ createdId: res.data.topic._id })
         // pass the response to the next .then so we can show the title
         return res
       })
@@ -65,25 +70,53 @@ class TopicCreate extends Component {
       }
     })
   }
+  // <TopicForm
+  // topic={topic}
+  // onChange={this.handleChange}
+  // onSubmit={this.handleSubmit}
+  // />
 
   render () {
     // destructure our movie and createdId state
     const { topic, createdId } = this.state
+    const { user } = this.props
+    console.log('user', user)
 
     // if the movie has been created and we set its id
     if (createdId) {
       // redirect to the movies show page
-      return <Redirect to={`/topics/${createdId}`} />
+      return <Redirect to={'/topics/'} />
     }
-
     return (
       <div>
         <h3>Create Topic</h3>
-        <TopicForm
-          topic={topic}
-          handleChange={this.handleChange}
-          handleSubmit={this.handleSubmit}
-        />
+        <Form onSubmit={this.handleSubmit}>
+          <Form.Group>
+            <Form.Label>Username:</Form.Label>
+            <Form.Control type="username"
+              name="username"
+              placeholder="Enter username"
+              value={topic.username}
+              onChange={this.handleChange}/>
+          </Form.Group>
+          <Form.Group>
+            <Form.Label>Topic:</Form.Label>
+            <Form.Control type="topic"
+              name="topic"
+              placeholder="Enter topic"
+              value={topic.topic}
+              onChange={this.handleChange}/>
+          </Form.Group>
+          <Form.Group>
+            <Form.Label>Comment:</Form.Label>
+            <Form.Control type="comment"
+              name="comment"
+              placeholder="Enter comment"
+              value={topic.comment}
+              onChange={this.handleChange}/>
+          </Form.Group>
+          <Button variant="primary" type='submit'></Button>
+        </Form>
       </div>
     )
   }

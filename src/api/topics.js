@@ -9,26 +9,27 @@ export const topicIndex = user => {
     // Add an authorization header
     headers: {
       // we need the user, so we have access to their token
-      'Authorization': `Token token=${user.token}`
+      'Authorization': `Bearer ${user.token}`
     }
   })
 }
 
 export const topicCreate = (topic, user) => {
+  console.log('this is user in topic create', user)
   return axios({
     url: apiUrl + '/topics',
     method: 'POST',
     // Add an authorization header
     headers: {
       // we need the user, so we have access to their token
-      'Authorization': `Token token=${user.token}`
+      'Authorization': `Bearer ${user.token}`
     },
-    // send the movie object as our data for creating a movie
+    // send the topic object as our data for creating a topic
     data: { topic }
   })
 }
 
-// get a single movie
+// get a single topic
 export const topicShow = (id, user) => {
   return axios({
     url: apiUrl + '/topics/' + id,
@@ -36,7 +37,7 @@ export const topicShow = (id, user) => {
     // Add an authorization header
     headers: {
       // we need the user, so we have access to their token
-      'Authorization': `Token token=${user.token}`
+      'Authorization': `Bearer ${user.token}`
     }
   })
 }
@@ -48,7 +49,7 @@ export const topicDelete = (id, user) => {
     // Add an authorization header
     headers: {
       // we need the user, so we have access to their token
-      'Authorization': `Token token=${user.token}`
+      'Authorization': `Bearer ${user.token}`
     }
   })
 }
@@ -58,7 +59,7 @@ export const topicUpdate = (id, topic, user) => {
     url: apiUrl + '/topics/' + id,
     method: 'PATCH',
     headers: {
-      'Authorization': `Token token=${user.token}`
+      'Authorization': `Bearer ${user.token}`
     },
     data: { topic }
   })
