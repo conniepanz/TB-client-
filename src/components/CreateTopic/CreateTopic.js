@@ -89,8 +89,8 @@ class TopicCreate extends Component {
     }
     return (
       <div>
-        <h3>Create Topic</h3>
-        <Form onSubmit={this.handleSubmit}>
+        <h3 className="h3">Create Topic</h3>
+        <Form onSubmit={this.handleSubmit} className="createform">
           <Form.Group>
             <Form.Label>Username:</Form.Label>
             <Form.Control type="username"
@@ -112,10 +112,11 @@ class TopicCreate extends Component {
             <Form.Control type="comment"
               name="comment"
               placeholder="Enter comment"
+              size="lg"
               value={topic.comment}
               onChange={this.handleChange}/>
           </Form.Group>
-          <Button variant="primary" type='submit'></Button>
+          <Button className="button" variant="primary" type='submit' size="lg">Submit</Button>
         </Form>
       </div>
     )

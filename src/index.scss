@@ -1,4 +1,10 @@
 @import '~bootstrap/scss/bootstrap';
-.comment {
-  align:center 
-}
+@import  url("https://fonts.googleapis.com/css2?family=Bungee+Shade&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@500;600&display=swap');
+$primary: #FF1493;
+$yellow: #FFFF00;
+
+.header {background-color: $primary; font-family: 'Bungee Shade'}
+.button {background-color: $primary; font-family: 'Caveat'}
+.createform{font-family:'Caveat'}
+.h3{font-family:'Caveat'}

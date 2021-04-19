@@ -83,7 +83,7 @@ class TopicShow extends Component {
 
     return (
       <div>
-        <h4>Username:{topic.username}</h4>
+        <h3>Username:{topic.username}</h3>
         <h3>Topic: {topic.topic}</h3>
         <h4>Comment: {topic.comment}</h4>
         <button

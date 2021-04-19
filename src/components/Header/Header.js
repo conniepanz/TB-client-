@@ -1,13 +1,18 @@
 import React, { Fragment } from 'react'
 import Nav from 'react-bootstrap/Nav'
 import Navbar from 'react-bootstrap/Navbar'
+import NavDropdown from 'react-bootstrap/NavDropdown'
 
 const authenticatedOptions = (
   <Fragment>
-    <Nav.Link href="#create-topic">Create Topic</Nav.Link>
-    <Nav.Link href="#topics">Topics</Nav.Link>
-    <Nav.Link href="#change-password">Change Password</Nav.Link>
-    <Nav.Link href="#sign-out">Sign Out</Nav.Link>
+    <NavDropdown title="Forum" id="basic-nav-dropdown">
+      <NavDropdown.Item href="#create-topic">Create Topic</NavDropdown.Item>
+      <NavDropdown.Item href="#topics">Topics</NavDropdown.Item>
+    </NavDropdown>
+    <NavDropdown title="Account">
+      <NavDropdown.Item href="#change-password">Change Password</NavDropdown.Item>
+      <NavDropdown.Item href="#sign-out">Sign Out</NavDropdown.Item>
+    </NavDropdown>
   </Fragment>
 )
 
@@ -21,11 +26,12 @@ const unauthenticatedOptions = (
 const alwaysOptions = (
   <Fragment>
     <Nav.Link href="#/">Home</Nav.Link>
+    <Nav.Link href="#about-us">About Us</Nav.Link>
   </Fragment>
 )
 
 const Header = ({ user }) => (
-  <Navbar bg="primary" variant="dark" expand="md">
+  <Navbar className="header" variant="dark" expand="md">
     <Navbar.Brand href="#">
       Timebomb
     </Navbar.Brand>

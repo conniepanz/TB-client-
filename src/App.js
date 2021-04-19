@@ -12,6 +12,9 @@ import ChangePassword from './components/ChangePassword/ChangePassword'
 import TopicCreate from './components/CreateTopic/CreateTopic'
 import IndexTopic from './components/IndexTopic/IndexTopic'
 import ShowTopic from './components/ShowTopic/ShowTopic'
+import UpdateTopic from './components/UpdateTopic/UpdateTopic'
+import Home from './components/Home/Home'
+import AboutUs from './components/AboutUs/AboutUs'
 
 class App extends Component {
   constructor (props) {
@@ -56,6 +59,12 @@ class App extends Component {
           />
         ))}
         <main className="container">
+          <Route exact path='/' user={user} render={() => (
+            <Home msgAlert={this.msgAlert} user={user} />
+          )} />
+          <Route path='/about-us' render={() => (
+            <AboutUs setUser={this.setUser} />
+          )} />
           <Route path='/sign-up' render={() => (
             <SignUp msgAlert={this.msgAlert} setUser={this.setUser} />
           )} />
@@ -77,6 +86,9 @@ class App extends Component {
           <AuthenticatedRoute user={user} path='/topics/:id' render={() => (
             <ShowTopic msgAlert={this.msgAlert} user={user} />
           )} />
+          <AuthenticatedRoute user={user} path='/topics/:id/edit' render={() => (
+            <UpdateTopic msgAlert={this.msgAlert} user={user} />
+          )}/>
 
         </main>
       </Fragment>
