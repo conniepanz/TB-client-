@@ -1,5 +1,5 @@
 import React from 'react'
-const timebomb = '/Timebomblogo.png'
+const timebomb = 'Timebomblogo.png'
 
 function Logo () {
   return <img src={timebomb} alt="Logo"/>
